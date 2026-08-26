@@ -187,11 +187,12 @@ FROM hmda_raw
 GROUP BY derived_dwelling_category, business_or_commercial_purpose
 ORDER BY n DESC;
 
+
 --- total units count
 SELECT activity_year, total_units, COUNT(*) as n 
 FROM hmda_raw
 GROUP BY activity_year, total_units
-ORDER BY n DESC;
+ORDER BY activity_year, n DESC;
 
 
 --- loan-amount distribution on RAW data (still has multifamily/commercial).
@@ -225,13 +226,14 @@ WHERE action_taken = 1
 GROUP BY derived_dwelling_category;
 
 --- income
-SELECT derived_dwelling_category, MIN(TRY_CAST(income AS INT)) AS min_value,
-       MEDIAN(TRY_CAST(income AS INT)) AS median_value,
+SELECT derived_dwelling_category, business_or_commercial_purpose, COUNT(*) AS n, MIN(TRY_CAST(income AS INT)) AS min_income,
+       MEDIAN(TRY_CAST(income AS INT)) AS median_income,
        QUANTILE_CONT(TRY_CAST(income AS INT), 0.99) AS p99,
-       MAX(TRY_CAST(income AS INT)) AS max_value
+       MAX(TRY_CAST(income AS INT)) AS max_income
 FROM hmda_raw
 WHERE action_taken = 1
-GROUP BY derived_dwelling_category;
+GROUP BY derived_dwelling_category, business_or_commercial_purpose
+ORDER BY median_income DESC;
 
 
 --- less than or = to 0
@@ -267,7 +269,7 @@ ORDER BY n DESC;
 
 --- loan term
 SELECT 
-    activity_year, loan_purpose,
+    loan_purpose, COUNT(*) as n,
     MIN(TRY_CAST(loan_term AS INTEGER)) AS min_term,
     MEDIAN(TRY_CAST(loan_term AS INTEGER)) AS median_term,
     AVG(TRY_CAST(loan_term AS INTEGER)) AS avg_term, 
@@ -275,16 +277,8 @@ SELECT
     MAX(TRY_CAST(loan_term AS INTEGER)) AS max_term
 FROM hmda_raw
 WHERE action_taken = 1
-GROUP BY activity_year, loan_purpose
-ORDER BY activity_year;
-
-
-SELECT activity_year, COUNT(*) AS n
-FROM hmda_raw
-WHERE loan_term = 'NA'
-    AND action_taken = 1
-GROUP BY activity_year
-ORDER BY n DESC;
+GROUP BY loan_purpose
+ORDER BY loan_purpose;
 
 
 --- submission_of_application
