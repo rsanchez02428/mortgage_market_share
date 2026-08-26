@@ -66,9 +66,13 @@ LIMIT 10;
 --  Create the table mapping LEI to respondent name for lender lookup.
 CREATE OR REPLACE TABLE lenders AS
 SELECT
+    activity_year,
     lei,
     respondent_name
-FROM read_csv_auto('data/raw/panel.csv', sample_size=-1);
+FROM read_csv_auto(
+    ['data/raw/2023_panel.csv',
+    'data/raw/2024_panel.csv',
+    'data/raw/2025_panel.csv'], sample_size=-1);
 
 -- Does the data looks correct.
 SELECT *
