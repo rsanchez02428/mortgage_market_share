@@ -81,6 +81,7 @@ GROUP BY loan_term
 
 ORDER BY column_name, n DESC;
 
+
 --- How many NA values across each state for each year?
 SELECT activity_year, state_code, 'county_code' AS column_name, COUNT(*) AS n
 FROM hmda_raw
@@ -122,7 +123,7 @@ FROM hmda_raw
 WHERE loan_term = 'NA'
 GROUP BY activity_year, state_code
 
-ORDER BY column_name, activity_year, state_code;
+ORDER BY state_code, activity_year, column_name ;
 
 
 --- How many regions untraceable?
@@ -259,11 +260,11 @@ WHERE action_taken = 1
 GROUP BY activity_year
 ORDER BY activity_year;
 
-SELECT activity_year, loan_type, COUNT(*) AS n
+SELECT loan_type, COUNT(*) AS n
 FROM hmda_raw
 WHERE TRY_CAST(interest_rate AS DOUBLE) < 3
     AND action_taken = 1
-GROUP BY activity_year, loan_type
+GROUP BY loan_type
 ORDER BY n DESC;
 
 
