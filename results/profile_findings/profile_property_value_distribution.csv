@@ -1,0 +1,5 @@
+derived_dwelling_category,min_value,median_value,p99,max_value
+Multifamily:Manufactured,135000,6275000.0,122280700.00000009,252905000
+Multifamily:Site-Built,5000,3805000.0,155906500.00000012,2147483647
+Single Family (1-4 Units):Manufactured,5000,345000.0,925000.0,35405000
+Single Family (1-4 Units):Site-Built,5000,705000.0,4105000.0,850005000

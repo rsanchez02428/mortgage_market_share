@@ -1,0 +1,13 @@
+derived_dwelling_category,business_or_commercial_purpose,n,min_income,median_income,p99,max_income
+Multifamily:Manufactured,1,282,0,317.0,982.5000000000001,1000
+Multifamily:Site-Built,1111,1201,39,201.5,2696.029999999999,3329
+Single Family (1-4 Units):Site-Built,1,132389,-2028,200.0,2975.2000000000116,6964107
+Multifamily:Manufactured,1111,69,192,192.0,192.0,192
+Single Family (1-4 Units):Site-Built,1111,13529,-1598,158.0,2039.400000000016,554661
+Single Family (1-4 Units):Site-Built,2,1997786,-12460,153.0,1183.0,3268980
+Single Family (1-4 Units):Manufactured,1,1089,0,147.0,1000.0,6000
+Multifamily:Site-Built,1,15004,0,121.0,136310.4600000005,548252
+Single Family (1-4 Units):Manufactured,1111,1460,0,104.0,776.3399999999979,8331
+Single Family (1-4 Units):Manufactured,2,60651,0,92.0,333.0,10849
+Multifamily:Manufactured,2,1,62,62.0,62.0,62
+Multifamily:Site-Built,2,118,0,0.0,1303.3999999999994,1490

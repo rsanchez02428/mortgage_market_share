@@ -1,0 +1,14 @@
+derived_dwelling_category,total_units,business_or_commercial_purpose,n,max_loan
+Multifamily:Site-Built,>149,1,610,2650005000.0
+Multifamily:Site-Built,100-149,1,98,344225000.0
+Multifamily:Site-Built,50-99,1,44,344225000.0
+Multifamily:Site-Built,>149,1111,37,127815000.0
+Multifamily:Manufactured,>149,1,16,125005000.0
+Single Family (1-4 Units):Site-Built,1,2,11,70005000.0
+Single Family (1-4 Units):Site-Built,1,1,5,510005000.0
+Multifamily:Site-Built,100-149,1111,4,58915000.0
+Multifamily:Site-Built,25-49,1,3,50005000.0
+Single Family (1-4 Units):Site-Built,2,1,1,57405000.0
+Single Family (1-4 Units):Site-Built,1,1111,1,34395000.0
+Multifamily:Manufactured,50-99,1,1,35505000.0
+Multifamily:Site-Built,5-24,1,1,30005000.0
