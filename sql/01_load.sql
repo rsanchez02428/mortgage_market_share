@@ -14,7 +14,7 @@ SELECT
     county_code,
     census_tract,
     "derived_msa-md" AS derived_msa_md,
-    action_taken, 
+    action_taken,
     loan_purpose, 
     loan_type,
     derived_loan_product_type,
