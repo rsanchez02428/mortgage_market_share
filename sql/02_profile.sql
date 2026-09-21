@@ -19,6 +19,60 @@ GROUP BY loan_purpose
 ORDER BY n DESC;
 
 
+--- Count the number of records per lein_status value.
+SELECT lien_status, COUNT(*) AS n
+FROM hmda_raw
+GROUP BY lien_status
+ORDER BY n DESC;
+
+
+--- Count the number of records per occupancy_type value.
+SELECT occupancy_type, COUNT(*) AS n
+FROM hmda_raw
+GROUP BY occupancy_type
+ORDER BY n DESC;
+
+--- Count the number of records per business_or_commercial_purpose value.
+SELECT business_or_commercial_purpose, COUNT(*) AS n
+FROM hmda_raw
+GROUP BY business_or_commercial_purpose
+ORDER BY n DESC;
+
+
+--- Count the number of records per open_end_line_of_credit value.
+SELECT open_end_line_of_credit, COUNT(*) AS n
+FROM hmda_raw
+GROUP BY open_end_line_of_credit
+ORDER BY n DESC;
+
+--- Count the number of records per reverse_mortgage value.
+SELECT reverse_mortgage, COUNT(*) AS n
+FROM hmda_raw
+GROUP BY reverse_mortgage
+ORDER BY n DESC;
+
+
+--- Count the number of records per total_units value.
+SELECT total_units, COUNT(*) AS n
+FROM hmda_raw
+GROUP BY total_units
+ORDER BY n DESC;
+
+
+--- Count the number of total records given the filters applied in the base view.
+SELECT COUNT(*) AS total_records
+FROM hmda_raw
+WHERE action_taken = 1
+    AND lien_status = 1
+    AND occupancy_type = 1
+    AND business_or_commercial_purpose = 2
+    AND loan_purpose = 1
+    AND open_end_line_of_credit = 2
+    AND reverse_mortgage = 2
+    AND total_units IN ('1', '2', '3', '4')
+    AND derived_msa_md IS NOT NULL;
+
+
 --- Count the number of records for each state_code value to understand the distribution of records by state.
 SELECT state_code, COUNT(*) AS n
 FROM hmda_raw
@@ -123,7 +177,7 @@ FROM hmda_raw
 WHERE loan_term = 'NA'
 GROUP BY activity_year, state_code
 
-ORDER BY state_code, activity_year, column_name ;
+ORDER BY state_code, activity_year, column_name;
 
 
 --- How many regions untraceable?
@@ -205,9 +259,9 @@ GROUP BY derived_dwelling_category
 ORDER BY derived_dwelling_category;
 
 
---- Investigate the giants BEFORE cutting: why is a loan $500M+?
+--- Investigate the giants: why is a loan $500M+?
 -- Almost always multifamily or business - i.e., not a house. The fix is
--- STRUCTURAL (scopr the population), not an arbitrary cap.
+-- STRUCTURAL (scope the population), not an arbitrary cap.
 SELECT derived_dwelling_category, total_units, business_or_commercial_purpose, 
     COUNT(*) AS n, MAX(loan_amount) AS max_loan
 FROM hmda_raw
@@ -331,4 +385,3 @@ FROM lenders
 GROUP BY respondent_name
 HAVING COUNT(DISTINCT lei) > 1
 ORDER BY n_leis DESC;
-
