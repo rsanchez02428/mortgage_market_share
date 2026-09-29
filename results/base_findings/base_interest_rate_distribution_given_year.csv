@@ -1,0 +1,4 @@
+activity_year,records,min_interest_rate,median_interest_rate,avg_interest_rate,p99,max_interest_rate
+2023,311244,0.0,6.5,6.545147448390961,9.375,15.25
+2024,326364,0.0,6.5985,6.559153676907639,9.336,14.78
+2025,320800,0.0,6.375,6.382895200441338,8.99,14.37
