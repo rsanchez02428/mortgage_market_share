@@ -218,8 +218,6 @@ WHERE property_value_num IS NULL
    OR loan_term_num IS NULL;
 
 
-
-
 --- Records with NA or Exempt values in any key numeric column.
 SELECT COUNT(*) AS na_exempt_records
 FROM base
