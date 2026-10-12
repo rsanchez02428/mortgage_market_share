@@ -77,6 +77,25 @@ ORDER BY loans DESC;
            COALESCE(n.county_name, c.county_code) AS county_name
     FROM county_market_size c
     LEFT JOIN county_names n ON c.county_code = n.county_code
-    WHERE c.county_code NOT IN ('NA','Exempt')
+    WHERE c.county_code NOT IN ('NA','Exempt');
 
 
+-- Distinct counties and metros per year
+SELECT
+    activity_year,
+    COUNT(DISTINCT CASE WHEN county_code NOT IN ('NA', 'Exempt') THEN county_code END) AS counties,
+    COUNT(DISTINCT CASE WHEN market <> '99999' THEN market END)                        AS metros
+FROM base
+GROUP BY activity_year
+ORDER BY activity_year;
+
+-- Count of counties in the county_opportunity table
+SELECT
+    COUNT(county_code) AS counties
+FROM county_opportunity;
+
+
+-- Count of metros in the opportunity table
+SELECT
+    COUNT(market) AS metros
+FROM opportunity;
