@@ -129,6 +129,19 @@ QUALIFY ROW_NUMBER() OVER (PARTITION BY activity_year ORDER BY COUNT(*) DESC) <=
 ORDER BY activity_year, pct_of_year DESC;
 
 
+--- Total origination volume (loan count and dollar amount) per year
+SELECT
+    activity_year,
+    COUNT(*) AS loan_count,
+    SUM(loan_amount) AS total_volume,
+    ROUND(SUM(loan_amount) / 1e9, 2) AS total_volume_bn,
+    ROUND(AVG(loan_amount), 0) AS avg_loan_amount
+FROM base
+WHERE market != '99999'
+GROUP BY activity_year
+ORDER BY activity_year;
+
+
 -- Distribution of loan amounts given the state and construction method.
 SELECT state_code, 
     construction_method, 
