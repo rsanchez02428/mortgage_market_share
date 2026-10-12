@@ -185,3 +185,7 @@ data/
 *.duckdb.wal
 dashboards/*.pbix
 .DS_Store
+
+# Private docs (kept locally, not tracked)
+docs/DEVLOG.md
+docs/METHODOLOGY.md
